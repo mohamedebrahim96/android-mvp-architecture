@@ -7,16 +7,23 @@ import android.widget.Toast
 import com.vacuum.androidmvp.R
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() ,MainView{
+class MainActivity : AppCompatActivity(), MainView {
 
-    private val presenter= MainPresenter(this,FindItemsInteractor())
-
-    //private val presenter = MainPresenter(this, FindItemsInteractor())
+    private val presenter = MainPresenter(this, FindItemsInteractor())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+    }
 
+    override fun onResume() {
+        super.onResume()
+        presenter.onResume()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.onDestroy()
     }
 
     override fun showProgress() {
@@ -35,15 +42,5 @@ class MainActivity : AppCompatActivity() ,MainView{
 
     override fun showMessage(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        presenter.onResume()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        presenter.onDestroy()
     }
 }

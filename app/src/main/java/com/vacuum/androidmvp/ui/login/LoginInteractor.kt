@@ -15,7 +15,7 @@ class LoginInteractor {
             when{
                 username.isEmpty() -> listener.onUsernameError()
                 password.isEmpty() -> listener.onPasswordError()
-
+                else -> listener.onSuccess()
             }
         }
     }
