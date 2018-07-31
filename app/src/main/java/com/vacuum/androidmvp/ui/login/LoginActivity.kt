@@ -2,28 +2,25 @@ package com.vacuum.androidmvp.ui.login
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.vacuum.androidmvp.ui.main.MainActivity
 import com.vacuum.androidmvp.R
 import kotlinx.android.synthetic.main.login_activity.*
 
-class LoginActivity: AppCompatActivity(), LoginView {
+class LoginActivity : AppCompatActivity(), LoginView {
 
+    private val presenter = LoginPresenter(this, LoginInteractor())
 
-    private val presenter = LoginPresenter(this,LoginInteractor())
-
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         setContentView(R.layout.login_activity)
-
 
         button.setOnClickListener { validateCredentials() }
     }
 
     private fun validateCredentials() {
-
+        presenter.validateCredentials(username.text.toString(), password.text.toString())
     }
 
     override fun onDestroy() {
@@ -40,13 +37,12 @@ class LoginActivity: AppCompatActivity(), LoginView {
     }
 
     override fun setUsernameError() {
-        username.error = "Error username"
+        username.error = "username_error"
     }
 
     override fun setPasswordError() {
-        password.error = "Error paswword"
+        password.error = "password_error"
     }
-
 
     override fun navigateToHome() {
         startActivity(Intent(this, MainActivity::class.java))

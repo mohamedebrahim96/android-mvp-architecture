@@ -9,6 +9,10 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() ,MainView{
 
+    private val presenter= MainPresenter(this,FindItemsInteractor())
+
+    //private val presenter = MainPresenter(this, FindItemsInteractor())
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
