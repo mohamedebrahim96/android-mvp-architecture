@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.antonioleiva.mvpexample.app.main.MainActivity">
+    tools:context="com.vacuum.androidmvp.ui.main.MainActivity">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/list"
