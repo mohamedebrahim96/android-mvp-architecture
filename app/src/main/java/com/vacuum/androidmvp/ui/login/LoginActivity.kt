@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.os.PersistableBundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import com.vacuum.androidmvp.MainActivity
+import com.vacuum.androidmvp.ui.main.MainActivity
 import com.vacuum.androidmvp.R
 import kotlinx.android.synthetic.main.login_activity.*
 
@@ -49,6 +49,6 @@ class LoginActivity: AppCompatActivity(), LoginView {
 
 
     override fun navigateToHome() {
-        startActivity(Intent(this,MainActivity::class.java))
+        startActivity(Intent(this, MainActivity::class.java))
     }
 }

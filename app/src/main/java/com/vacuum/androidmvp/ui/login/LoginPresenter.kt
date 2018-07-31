@@ -1,11 +1,31 @@
 package com.vacuum.androidmvp.ui.login
 
-class LoginPresenter(var loginview:LoginView ,val logininteractor: LoginInteractor): LoginInteractor.OnLoginFinishedListener  {
-
-
+class LoginPresenter(var loginView:LoginView? ,val loginInteractor: LoginInteractor):
+        LoginInteractor.OnLoginFinishedListener  {
     fun validateCredentials(username: String, password: String) {
-        loginview?.showProgress()
-        logininteractor.login(username, password, this)
+        loginView?.showProgress()
+        loginInteractor.login(username, password, this)
     }
 
+    fun onDestroy() {
+        loginView = null
+    }
+
+    override fun onUsernameError() {
+        loginView?.apply {
+            setUsernameError()
+            hideProgress()
+        }
+    }
+
+    override fun onPasswordError() {
+        loginView?.apply {
+            setPasswordError()
+            hideProgress()
+        }
+    }
+
+    override fun onSuccess() {
+        loginView?.navigateToHome()
+    }
 }
