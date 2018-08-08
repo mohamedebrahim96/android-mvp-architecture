@@ -20,6 +20,8 @@ class MainActivity : AppCompatActivity(), MainView {
 
 
 
+
+
     override fun onResume() {
         super.onResume()
         presenter.onResume()
