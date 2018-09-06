@@ -4,17 +4,18 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import com.vacuum.androidmvp.ui.main.MainActivity
 import com.vacuum.androidmvp.R
-import kotlinx.android.synthetic.main.login_activity.*
+import com.vacuum.androidmvp.model.LoginInteractor
+import com.vacuum.androidmvp.ui.main.MainActivity
+import kotlinx.android.synthetic.main.activity_login.*
 
-class LoginActivity : AppCompatActivity(), LoginView {
+class LoginActivity : AppCompatActivity(), LoginMvpView {
 
     private val presenter = LoginPresenter(this, LoginInteractor())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.login_activity)
+        setContentView(R.layout.activity_login)
 
         button.setOnClickListener { validateCredentials() }
     }
@@ -32,7 +33,7 @@ class LoginActivity : AppCompatActivity(), LoginView {
         progress.visibility = View.VISIBLE
     }
 
-    override fun hideProgress() {
+    override fun hideprogress() {
         progress.visibility = View.GONE
     }
 

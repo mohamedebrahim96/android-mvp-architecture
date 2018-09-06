@@ -1,5 +1,4 @@
-package com.vacuum.androidmvp
-
+package com.vacuum.androidmvp.utils
 
 import android.os.Handler
 

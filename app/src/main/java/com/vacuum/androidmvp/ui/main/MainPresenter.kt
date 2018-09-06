@@ -1,29 +1,29 @@
 package com.vacuum.androidmvp.ui.main
 
-class MainPresenter (var mainView: MainView?,
-                     val findItemsInteractor: FindItemsInteractor) {
+import com.vacuum.androidmvp.model.MainInteractor
+
+class MainPresenter(var view: MainMvpView?,val mainInteractor: MainInteractor):MainMvpPresenter {
 
 
-    fun onResume() {
-        mainView?.showProgress()
-        findItemsInteractor.findItems(::onItemsLoaded)
+
+
+
+    fun onResume(){
+        view?.showprogress()
+        mainInteractor.findItems(::onItemsLoaded)
     }
-
     private fun onItemsLoaded(items: List<String>) {
-        mainView?.apply {
-            setItems(items)
-            hideProgress()
+        view?.apply {
+            setitems(items)
+            hideprogress()
         }
     }
 
     fun onItemClicked(item: String) {
-        mainView?.showMessage(item)
+        view?.setmessage(item)
     }
 
-    fun onDestroy() {
-        mainView = null
+    fun onDestroy(){
+        view = null
     }
-
-
-
 }

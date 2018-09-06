@@ -1,10 +1,10 @@
 package com.vacuum.androidmvp.ui.main
 
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import com.vacuum.androidmvp.R
-import android.support.v7.widget.RecyclerView
 
 class MainAdapter(private val items: List<String>, private val listener: (String) -> Unit) :
         RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
@@ -27,4 +27,5 @@ class MainAdapter(private val items: List<String>, private val listener: (String
     class MainViewHolder(val textView: TextView) : RecyclerView.ViewHolder(textView) {
 
     }
+
 }

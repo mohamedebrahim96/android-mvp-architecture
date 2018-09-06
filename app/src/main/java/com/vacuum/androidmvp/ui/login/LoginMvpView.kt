@@ -1,8 +1,9 @@
 package com.vacuum.androidmvp.ui.login
 
-interface LoginView {
+interface LoginMvpView  {
+
     fun showProgress()
-    fun hideProgress()
+    fun hideprogress()
     fun setUsernameError()
     fun setPasswordError()
     fun navigateToHome()
